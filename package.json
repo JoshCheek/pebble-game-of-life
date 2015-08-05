@@ -2,12 +2,11 @@
   "private": true,
   "name": "playing-with-pebble",
   "scripts": {
-    "test": "mocha --compilers js:babel/register",
+    "test": "env NODE_PATH=src mocha",
     "exec": "exec",
-    "env":  "env"
+    "env": "env"
   },
   "devDependencies": {
-    "babel": "~4.7",
     "mocha": "~2.2"
   },
   "files": [
