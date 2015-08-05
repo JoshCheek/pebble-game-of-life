@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "playing-with-pebble",
+  "scripts": {
+    "test": "mocha --compilers js:babel/register",
+    "exec": "exec",
+    "env":  "env"
+  },
+  "devDependencies": {
+    "babel": "~4.7",
+    "mocha": "~2.2"
+  },
+  "files": [
+    "src"
+  ]
+}
