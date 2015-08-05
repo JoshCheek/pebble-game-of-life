@@ -85,3 +85,13 @@ describe('potentiallyLiving', function() {
     )
   });
 });
+
+
+describe('tomorrow', function() {
+  it('returns the cells that will be alive tomorrow', function() {
+    blinker1 = [[1, 1], [0, 1], [2, 1]];
+    blinker2 = [[1, 1], [1, 0], [1, 2]];
+    assert.deepEqual(blinker2, gol.tomorrow(blinker1));
+    assert.deepEqual(blinker1, gol.tomorrow(blinker2));
+  });
+});

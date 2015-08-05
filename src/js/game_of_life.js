@@ -39,13 +39,13 @@ gol.isAliveTomorrow = function(cells, cell) {
   return n == 3 || (n == 2 && gol.isAlive(cells, cell));
 }
 
-// function tomorrow(cells) {
-//   var potentials = potentiallyLiving(cells);
-//   var livingNeighboursCount = _.select(potentials, function(potential) {
-//     return isAliveTomorrow(cells, potential);
-//   });
-//   return livingNeighboursCount;
-// }
+gol.tomorrow = function(cells) {
+  var potentials = gol.potentiallyLiving(cells);
+  var livingNeighbours = _.select(potentials, function(potential) {
+    return gol.isAliveTomorrow(cells, potential);
+  });
+  return livingNeighbours;
+};
 
 gol.potentiallyLiving = function(cells) {
   var potentiallyLiving = [];
@@ -57,22 +57,12 @@ gol.potentiallyLiving = function(cells) {
     });
   });
   return potentiallyLiving;
-}
+};
 
 gol.hasCell = function(cells, cell) {
   return !!_.find(cells, function(potential) {
     return potential[0] == cell[0] && potential[1] == cell[1];
   });
-}
+};
 
-// // var cells = [[1, 0], [1, 1], [1, 2]];
-// // console.dir(cells);
-// // console.dir(tomorrow(cells));
-//     // console.log({
-//     //   currentX: currentX,
-//     //   currentY: currentY,
-//     //   expectedX: expectedX,
-//     //   expectedY: expectedY,
-//     // });
-
-module.exports = gol
+module.exports = gol;
