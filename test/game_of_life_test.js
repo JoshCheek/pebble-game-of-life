@@ -33,6 +33,13 @@ describe('neighboursOf', function() {
     ]
     assert.deepEqual(neighbours, gol.neighboursOf([0, 0]));
   });
-  // it('returns the number of neighbours that are alive', function() {
-  // });
+});
+
+describe('numNeigbours', function() {
+  it('returns the number of neighbours that are alive', function() {
+    assert.equal(0, gol.numNeighbours([                  ], [1,2]));
+    assert.equal(0, gol.numNeighbours([[0,0]             ], [1,2]));
+    assert.equal(1, gol.numNeighbours([[1,2],[2,2]       ], [1,2]));
+    assert.equal(2, gol.numNeighbours([[1,2],[1,3], [2,1]], [1,2]));
+  });
 });
