@@ -3,14 +3,20 @@
 var _   = require("./underscore-min");
 var gol = {};
 
+gol.tomorrow = function(cells) {
+  var potentials = gol.potentiallyLiving(cells);
+  var livingNeighbours = _.select(potentials, function(potential) {
+    return gol.isAliveTomorrow(cells, potential);
+  });
+  return livingNeighbours;
+};
+
 gol.isAlive = function(cells, target) {
   var expectedX = target[0];
   var expectedY = target[1];
 
   var cell = _.find(cells, function(current) {
-    var currentX = current[0];
-    var currentY = current[1];
-    return currentX == expectedX && currentY == expectedY;
+    return current[0] == expectedX && current[1] == expectedY;
   });
   return cell;
 }
@@ -38,14 +44,6 @@ gol.isAliveTomorrow = function(cells, cell) {
   var n = gol.numNeighbours(cells, cell);
   return n == 3 || (n == 2 && gol.isAlive(cells, cell));
 }
-
-gol.tomorrow = function(cells) {
-  var potentials = gol.potentiallyLiving(cells);
-  var livingNeighbours = _.select(potentials, function(potential) {
-    return gol.isAliveTomorrow(cells, potential);
-  });
-  return livingNeighbours;
-};
 
 gol.potentiallyLiving = function(cells) {
   var potentiallyLiving = [];

@@ -1,18 +1,6 @@
 var assert = require("assert")
 var gol = require("../src/js/game_of_life");
 
-// fail: [Function: fail],
-// ok: [Circular],
-// equal: [Function: equal],
-// notEqual: [Function: notEqual],
-// deepEqual: [Function: deepEqual],
-// notDeepEqual: [Function: notDeepEqual],
-// strictEqual: [Function: strictEqual],
-// notStrictEqual: [Function: notStrictEqual],
-// throws: [Function],
-// doesNotThrow: [Function],
-// ifError: [Function] }
-
 describe('isAlive', function() {
   it('returns true if the cell is in the list of living cells', function () {
     var world = [[1,2],[3,4]]
@@ -89,8 +77,8 @@ describe('potentiallyLiving', function() {
 
 describe('tomorrow', function() {
   it('returns the cells that will be alive tomorrow', function() {
-    blinker1 = [[1, 1], [0, 1], [2, 1]];
-    blinker2 = [[1, 1], [1, 0], [1, 2]];
+    var blinker1 = [[1, 1], [0, 1], [2, 1]];
+    var blinker2 = [[1, 1], [1, 0], [1, 2]];
     assert.deepEqual(blinker2, gol.tomorrow(blinker1));
     assert.deepEqual(blinker1, gol.tomorrow(blinker2));
   });
