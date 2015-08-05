@@ -23,3 +23,16 @@ describe('isAlive', function() {
     assert.ok(!gol.isAlive(world, [0,0])) // mismatch on both
   });
 });
+
+describe('neighboursOf', function() {
+  it('returns the 8 cells around the cell', function() {
+    var neighbours = [
+      [-1,-1], [0,-1], [1,-1],
+      [-1, 0],         [1, 0],
+      [-1, 1], [0, 1], [1, 1]
+    ]
+    assert.deepEqual(neighbours, gol.neighboursOf([0, 0]));
+  });
+  // it('returns the number of neighbours that are alive', function() {
+  // });
+});

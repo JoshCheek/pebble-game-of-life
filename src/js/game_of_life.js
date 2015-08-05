@@ -13,7 +13,25 @@ var gol = {
       return currentX == expectedX && currentY == expectedY;
     });
     return cell;
+  },
+  neighboursOf: function(cell) {
+    var x = cell[0]
+    var y = cell[1]
+    var neighbours = [
+      [x-1, y-1], [x, y-1], [x+1, y-1],
+      [x-1, y  ],           [x+1, y  ],
+      [x-1, y+1], [x, y+1], [x+1, y+1],
+    ];
+    return neighbours;
   }
+
+  // // console.log(num_neighbours([], [1,2]));
+// // console.log(isAliveTomorrow([[1,2],[1,3], [2,1]], [1,2]));
+// // console.log(isAliveTomorrow([[1,2],[3,4]], [1,2]));
+  // function isAliveTomorrow(cells, cell) {
+  //   var n = num_neighbours(cells, cell);
+  //   return n == 3 || (n == 2 && isAlive(cells, cell));
+  // }
 }
 
 // function num_neighbours(cells, cell) {
@@ -24,11 +42,6 @@ var gol = {
 //   return livingNeighboursCount.length;
 // }
 
-
-// function isAliveTomorrow(cells, cell) {
-//   var n = num_neighbours(cells, cell);
-//   return n == 3 || (n == 2 && isAlive(cells, cell));
-// }
 
 // console.log(num_neighbours([[1,2],[1,3], [2,1]], [1,2]));
 // console.log(isAliveTomorrow([[1,2],[1,3], [2,1]], [1,2]));
@@ -50,20 +63,6 @@ var gol = {
 //   });
 //   return potentiallyLiving;
 // }
-
-// function neighbours_of(cells, cell) {
-//   var x = cell[0]
-//   var y = cell[1]
-//   var neighbours = [
-//     [y-1, x-1], [y-1, x], [y-1, x+1],
-//     [y  , x-1],           [y  , x+1],
-//     [y+1, x-1], [y+1, x], [y+1, x+1],
-//   ];
-//   return neighbours;
-// }
-// // console.log(num_neighbours([], [1,2]));
-// // console.log(isAliveTomorrow([[1,2],[1,3], [2,1]], [1,2]));
-// // console.log(isAliveTomorrow([[1,2],[3,4]], [1,2]));
 
 // // var cells = [[1, 0], [1, 1], [1, 2]];
 // // console.dir(cells);
