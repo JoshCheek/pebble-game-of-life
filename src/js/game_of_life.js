@@ -39,28 +39,31 @@ gol.isAliveTomorrow = function(cells, cell) {
   return n == 3 || (n == 2 && gol.isAlive(cells, cell));
 }
 
-
-
-// console.log(numNeighbours([[1,2],[1,3], [2,1]], [1,2]));
-// console.log(isAliveTomorrow([[1,2],[1,3], [2,1]], [1,2]));
-// console.log(isAliveTomorrow([[1,2],[3,4]], [1,2]));
-
 // function tomorrow(cells) {
-//   var potentials = potentially_living(cells);
+//   var potentials = potentiallyLiving(cells);
 //   var livingNeighboursCount = _.select(potentials, function(potential) {
 //     return isAliveTomorrow(cells, potential);
 //   });
 //   return livingNeighboursCount;
 // }
 
-// function potentially_living(cells) {
-//   var potentiallyLiving = [];
-//   cells.forEach(function(cell) {
-//     potentiallyLiving.push(cell);
-//     neighboursOf(cells, cell).forEach(function(neighbour) { potentiallyLiving.push(cell); });
-//   });
-//   return potentiallyLiving;
-// }
+gol.potentiallyLiving = function(cells) {
+  var potentiallyLiving = [];
+  cells.forEach(function(cell) { potentiallyLiving.push(cell) })
+  cells.forEach(function(cell) {
+    gol.neighboursOf(cell).forEach(function(neighbour) {
+      if(!gol.hasCell(potentiallyLiving, neighbour))
+        potentiallyLiving.push(neighbour)
+    });
+  });
+  return potentiallyLiving;
+}
+
+gol.hasCell = function(cells, cell) {
+  return !!_.find(cells, function(potential) {
+    return potential[0] == cell[0] && potential[1] == cell[1];
+  });
+}
 
 // // var cells = [[1, 0], [1, 1], [1, 2]];
 // // console.dir(cells);

@@ -60,3 +60,28 @@ describe('isAliveTomorrow', function() {
     assert.ok(!gol.isAliveTomorrow([[1, 1], [0,  1], [0, 0], [1, 0], [2, 0]], [1, 1]))
   });
 });
+
+describe('hasCell', function() {
+  it('returns true if the cell is in the collection', function() {
+    assert.ok( gol.hasCell([[0,0], [1,1]], [0,0]));
+    assert.ok( gol.hasCell([[0,0], [1,1]], [1,1]));
+    assert.ok(!gol.hasCell([[0,0], [1,1]], [2,1]));
+    assert.ok(!gol.hasCell([[0,0], [1,1]], [1,2]));
+    assert.ok(!gol.hasCell([[0,0], [1,1]], [2,2]));
+  });
+});
+
+describe('potentiallyLiving', function() {
+  it('chooses all the living cells, and all the ones around them', function() {
+    assert.deepEqual([
+        [0, 0], [0, 1],          // existing cells
+
+        [-1,-1], [0,-1], [1,-1], // additions
+        [-1, 0],         [1, 0],
+        [-1, 1],         [1, 1],
+        [-1, 2], [0, 2], [1, 2]
+      ],
+      gol.potentiallyLiving([[0, 0], [0, 1]])
+    )
+  });
+});
