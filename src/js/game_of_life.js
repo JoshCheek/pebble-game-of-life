@@ -34,10 +34,10 @@ gol.numNeighbours = function(cells, cell) {
   return livingNeighbours.length;
 }
 
-  // function isAliveTomorrow(cells, cell) {
-  //   var n = numNeighbours(cells, cell);
-  //   return n == 3 || (n == 2 && isAlive(cells, cell));
-  // }
+gol.isAliveTomorrow = function(cells, cell) {
+  var n = gol.numNeighbours(cells, cell);
+  return n == 3 || (n == 2 && gol.isAlive(cells, cell));
+}
 
 
 

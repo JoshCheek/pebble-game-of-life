@@ -43,3 +43,20 @@ describe('numNeigbours', function() {
     assert.equal(2, gol.numNeighbours([[1,2],[1,3], [2,1]], [1,2]));
   });
 });
+
+describe('isAliveTomorrow', function() {
+  it('will be alive if it is dead and has 3 neighbours', function() {
+    assert.ok( gol.isAliveTomorrow([         [0, 0], [1, 0], [2, 0]], [1, 1]))
+    assert.ok( gol.isAliveTomorrow([[1, -1], [0, 0], [1, 0], [2, 0]], [1, 1]))
+    assert.ok(!gol.isAliveTomorrow([                 [1, 0], [2, 0]], [1, 1]))
+    assert.ok(!gol.isAliveTomorrow([[0,  1], [0, 0], [1, 0], [2, 0]], [1, 1]))
+  });
+  it('will be alive if it is alive and has 2 or 3 neighbours', function() {
+    assert.ok( gol.isAliveTomorrow([[1, 1],                  [1, 0], [2, 0]], [1, 1]))
+    assert.ok( gol.isAliveTomorrow([[1, 1],          [0, 0], [1, 0], [2, 0]], [1, 1]))
+    assert.ok( gol.isAliveTomorrow([[1, 1], [1, -1], [0, 0], [1, 0], [2, 0]], [1, 1]))
+
+    assert.ok(!gol.isAliveTomorrow([[1, 1],                          [2, 0]], [1, 1]))
+    assert.ok(!gol.isAliveTomorrow([[1, 1], [0,  1], [0, 0], [1, 0], [2, 0]], [1, 1]))
+  });
+});
